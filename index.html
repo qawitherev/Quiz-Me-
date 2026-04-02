@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Quiz Me — SAA-C03</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Background depth layer -->
+  <div class="bg-layer" aria-hidden="true">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
+  </div>
+
+  <main class="app">
+
+    <!-- ── Welcome ──────────────────────────────────────────────────── -->
+    <section id="screen-welcome" class="screen active" aria-label="Welcome">
+      <div class="card welcome-card">
+
+        <div class="welcome-top">
+          <span class="badge">SAA-C03</span>
+          <h1>Quiz Me</h1>
+          <p class="sub">AWS Certified Solutions Architect — Associate</p>
+        </div>
+
+        <div class="stat-strip inset">
+          <div class="stat">
+            <span class="stat-key">Questions</span>
+            <strong class="stat-val" id="stat-questions">—</strong>
+          </div>
+          <span class="vr"></span>
+          <div class="stat">
+            <span class="stat-key">Duration</span>
+            <strong class="stat-val">130 min</strong>
+          </div>
+          <span class="vr"></span>
+          <div class="stat">
+            <span class="stat-key">Pass Score</span>
+            <strong class="stat-val">720</strong>
+          </div>
+        </div>
+
+        <div id="load-error" class="error-box hidden">
+          Could not load <code>questions_set.json</code>. Run <code>node server.js</code>
+          in this project folder, then open <code>http://localhost:8000</code>.
+        </div>
+
+        <div class="toggle-list">
+          <label class="toggle-row">
+            <span class="toggle-text">Shuffle questions and options</span>
+            <input type="checkbox" id="opt-shuffle" checked />
+            <span class="knob"></span>
+          </label>
+          <label class="toggle-row">
+            <span class="toggle-text">Show explanations in review</span>
+            <input type="checkbox" id="opt-review" checked />
+            <span class="knob"></span>
+          </label>
+          <label class="toggle-row">
+            <span class="toggle-text">Number of questions</span>
+            <select id="opt-question-count" class="select-count">
+              <option value="10">10</option>
+              <option value="30">30</option>
+              <option value="65" selected>65 (All)</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="start-actions">
+          <input type="file" id="inp-bank-file" accept=".json" style="display:none" />
+          <button id="btn-refresh-set" class="btn btn-ghost btn-full">
+            Upload Question Bank
+          </button>
+          <button id="btn-continue" class="btn btn-primary btn-full hidden">
+            Continue Quiz
+          </button>
+          <button id="btn-start" class="btn btn-primary btn-full" disabled>
+            Start Quiz
+          </button>
+          <button id="btn-history-open" class="btn btn-ghost btn-full">
+            Past Quizzes
+          </button>
+        </div>
+
+        <p id="refresh-status" class="refresh-status hidden" aria-live="polite"></p>
+
+      </div>
+    </section>
+
+    <!-- ── Quiz ─────────────────────────────────────────────────────── -->
+    <section id="screen-quiz" class="screen" aria-label="Quiz">
+      <div class="quiz-wrap">
+
+        <!-- Progress -->
+        <div class="card prog-card">
+          <div class="prog-labels">
+            <span id="q-counter">Question 1 of 1</span>
+            <div class="prog-right">
+              <span id="q-tag-pill" class="tag-pill hidden">Tagged</span>
+              <span id="q-domain" class="domain-label"></span>
+            </div>
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" id="bar-fill"></div>
+          </div>
+        </div>
+
+        <div class="quiz-main">
+          <div class="quiz-primary">
+            <!-- Question -->
+            <div class="card q-card">
+              <div class="q-meta">
+                <span id="q-type-badge" class="badge badge-type"></span>
+                <span id="q-tag-indicator" class="badge badge-tag hidden">Tagged</span>
+                <span id="q-review-indicator" class="badge badge-review hidden"></span>
+                <button id="btn-correct-start" type="button" class="badge badge-correct hidden">✎ Correct Answer</button>
+              </div>
+              <p id="q-text" class="q-text"></p>
+              <p id="q-hint" class="q-hint hidden"></p>
+              <div id="q-options" class="options" role="group" aria-label="Answer options"></div>
+
+              <div id="q-correct" class="q-correct hidden">
+                <div class="q-correct-bar">
+                  <span class="q-correct-label">Select the correct answer(s)</span>
+                  <div class="q-correct-actions">
+                    <button id="btn-correct-save" type="button" class="btn btn-primary btn-sm">Save Correction</button>
+                    <button id="btn-correct-cancel" type="button" class="btn btn-ghost btn-sm">Cancel</button>
+                  </div>
+                </div>
+              </div>
+
+              <div id="q-expl" class="expl hidden" role="note">
+                <p class="expl-label">Explanation</p>
+                <p id="q-expl-text" class="expl-body"></p>
+              </div>
+
+              <div id="q-note" class="q-note hidden">
+                <label class="q-note-label" for="q-note-area">Your Note</label>
+                <textarea id="q-note-area" class="q-note-area" rows="3" placeholder="Add a note for this question…"></textarea>
+              </div>
+            </div>
+
+            <!-- Nav -->
+            <nav class="quiz-nav" aria-label="Question navigation">
+              <div class="nav-left">
+                <button id="btn-prev" class="btn btn-ghost">Previous</button>
+                <button id="btn-tag" class="btn btn-ghost">Tag Question</button>
+                <button id="btn-quit" class="btn btn-ghost btn-quit">Quit</button>
+              </div>
+              <div class="nav-right">
+                <button id="btn-submit" class="btn btn-primary hidden">Submit Quiz</button>
+                <button id="btn-next" class="btn btn-primary">Next</button>
+              </div>
+            </nav>
+          </div>
+
+          <aside class="card jump-card" aria-label="Jump navigation">
+            <div class="jump-top">
+              <span class="jump-title">Jump To Question</span>
+              <span class="jump-note">Tagged questions have a green ring</span>
+            </div>
+            <div id="q-jump-grid" class="jump-grid" role="group" aria-label="Jump to question"></div>
+            <div class="jump-legend" aria-label="Question status legend">
+              <span class="legend-item"><span class="legend-dot current"></span>Current</span>
+              <span class="legend-item"><span class="legend-dot answered"></span>Answered</span>
+              <span class="legend-item"><span class="legend-dot tagged"></span>Tagged</span>
+              <span class="legend-item"><span class="legend-dot correct"></span>Correct</span>
+              <span class="legend-item"><span class="legend-dot incorrect"></span>Incorrect</span>
+            </div>
+          </aside>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── Results ──────────────────────────────────────────────────── -->
+    <section id="screen-results" class="screen" aria-label="Results">
+      <div class="card results-card">
+
+        <span id="verdict" class="verdict"></span>
+
+        <div class="score-row">
+          <span id="score-num" class="score-num">—</span>
+          <span class="score-of">/ 1000</span>
+        </div>
+        <p id="score-sub" class="sub"></p>
+
+        <p class="section-title">Performance by Domain</p>
+        <div id="domain-list" class="domain-list inset"></div>
+        <p id="tagged-summary" class="tagged-summary">No tagged questions in this quiz.</p>
+
+        <div class="results-actions">
+          <button id="btn-review" class="btn btn-ghost hidden">Review Answers</button>
+          <button id="btn-review-tagged" class="btn btn-ghost hidden">Review Tagged</button>
+          <button id="btn-restart" class="btn btn-primary">Restart</button>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── History ────────────────────────────────────────────── -->
+    <section id="screen-history" class="screen" aria-label="Quiz History">
+      <div class="card history-card">
+        <div class="history-top">
+          <h2 class="history-title">Past Quizzes</h2>
+          <button id="btn-history-back" class="btn btn-ghost">← Back</button>
+        </div>
+        <div id="history-list" class="history-list"></div>
+        <p id="history-empty" class="history-empty hidden">No saved quizzes yet. Complete a quiz to see it here.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

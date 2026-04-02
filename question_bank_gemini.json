@@ -1,0 +1,2413 @@
+{
+  "exam_metadata": {
+    "exam_code": "SAA-C03",
+    "passing_score": 720,
+    "source": "Generated SAA-C03 Mock Data",
+    "answer_key_source": "None",
+    "counter_field": "times_selected",
+    "selection_size": 65,
+    "generated_at": "2026-03-27T07:39:13.950Z"
+  },
+  "questions": [
+    {
+      "source_id": 1,
+      "bank_id": "saa-c03-gemini-0001",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "A company is migrating a legacy application to AWS. The application requires a highly available relational database. The company wants to minimize operational overhead for database backups, patching, and scaling. Which solution meets these requirements?",
+      "options": [
+        "Deploy the database on Amazon EC2 instances across multiple Availability Zones.",
+        "Migrate to Amazon RDS and enable Multi-AZ deployments.",
+        "Use Amazon DynamoDB with point-in-time recovery enabled.",
+        "Deploy the database on AWS Fargate with Amazon EFS for persistent storage."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon RDS is a managed service that handles backups, patching, and scaling, reducing operational overhead. Enabling Multi-AZ provides high availability for resilience across Availability Zones.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Migrate to Amazon RDS and enable Multi-AZ deployments."
+      ]
+    },
+    {
+      "source_id": 2,
+      "bank_id": "saa-c03-gemini-0002",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "A web application runs on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The application occasionally experiences sudden, massive spikes in traffic within minutes, causing degraded performance before the Auto Scaling group can scale out effectively. How can a solutions architect improve the application's responsiveness to these expected spikes?",
+      "options": [
+        "Implement scheduled scaling for the Auto Scaling group.",
+        "Use target tracking scaling policies instead of simple scaling policies.",
+        "Configure predictive scaling for the Auto Scaling group.",
+        "Decrease the health check grace period of the Auto Scaling group."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Predictive scaling proactively scales out the Auto Scaling group in anticipation of predicted traffic spikes based on historical patterns, successfully avoiding the delay of pure reactive scaling.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Configure predictive scaling for the Auto Scaling group."
+      ]
+    },
+    {
+      "source_id": 3,
+      "bank_id": "saa-c03-gemini-0003",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "A company has a secure S3 bucket that contains highly sensitive financial documents. They must guarantee that the objects are not deleted or overwritten by anyone for exactly 7 years to meet regulatory requirements. Which feature should they implement?",
+      "options": [
+        "S3 Versioning with MFA Delete",
+        "S3 Object Lock in Governance mode",
+        "S3 Object Lock in Compliance mode",
+        "S3 Lifecycle policies transitioning to S3 Glacier Deep Archive"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "S3 Object Lock in Compliance mode prevents anyone, including the AWS account root user, from deleting or modifying an object until the retention period has completely expired.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "S3 Object Lock in Compliance mode"
+      ]
+    },
+    {
+      "source_id": 4,
+      "bank_id": "saa-c03-gemini-0004",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "A company wants to process streaming security data in real-time. They receive log data from thousands of endpoints globally and need to perform real-time analytics to detect anomalies before storing the data durably. Which combination of AWS services is best suited for this task?",
+      "options": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics",
+        "Amazon SQS and AWS Lambda",
+        "Amazon SNS and Amazon CloudWatch",
+        "AWS Glue and Amazon Athena"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Kinesis Data Streams collects and durably stores the streaming data. Kinesis Data Analytics natively integrates to process and analyze this streaming data in real-time using standard SQL or Apache Flink.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics"
+      ]
+    },
+    {
+      "source_id": 5,
+      "bank_id": "saa-c03-gemini-0005",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "A software company uses AWS Organizations to manage multiple environments. They want to ensure that no developer in the 'Development' organizational unit (OU) can provision Amazon EC2 instances larger than t3.large. What is the most operationally efficient way to enforce this?",
+      "options": [
+        "Create an IAM permissions boundary denying access to large instances and attach it to all IAM users.",
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU.",
+        "Configure an AWS Lambda function with EventBridge to terminate any large instance immediately after launch.",
+        "Use AWS Config to monitor instance launches and trigger a notification if a large instance is detected."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "SCPs offer central control over the maximum available permissions for all accounts in an OU. Attaching an SCP efficiently ensures the restriction applies universally across all member accounts without trusting local administrators.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU."
+      ]
+    },
+    {
+      "source_id": 6,
+      "bank_id": "saa-c03-gemini-0006",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "A solutions architect is designing an architecture for a new application that will use an Amazon Elastic File System (Amazon EFS) file system. The data is only accessed frequently for the first 30 days. After 30 days, the data is rarely accessed but must remain available within milliseconds. Which solution will meet these requirements MOST cost-effectively?",
+      "options": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days.",
+        "Use AWS DataSync to move files older than 30 days to Amazon S3 Standard-Infrequent Access.",
+        "Create a cron job on an EC2 instance to move older files to an Amazon Elastic Block Store (Amazon EBS) Cold HDD (sc1) volume.",
+        "Create an EFS lifecycle policy to transition files to the EFS Archive storage class after 30 days."
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "EFS Lifecycle Management automatically transitions files that have not been accessed for a defined period (e.g., 30 days) to the cost-optimized EFS IA storage class, which still provides millisecond retrieval latencies.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days."
+      ]
+    },
+    {
+      "source_id": 7,
+      "bank_id": "saa-c03-gemini-0007",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "A company's website is experiencing poor performance globally due to heavy image loading. The images are stored in an Amazon S3 bucket in the us-east-1 Region. Users in Europe and Asia are reporting high latency. Which AWS service should a solutions architect use to improve the performance for global users?",
+      "options": [
+        "AWS Global Accelerator",
+        "Amazon Route 53 with latency-based routing",
+        "Amazon CloudFront",
+        "Amazon S3 Transfer Acceleration"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon CloudFront is a globally distributed CDN that caches static content like images at edge locations near the users, drastically reducing latency for downloading these assets globally.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Amazon CloudFront"
+      ]
+    },
+    {
+      "source_id": 8,
+      "bank_id": "saa-c03-gemini-0008",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "A healthcare organization is migrating its patient records database to AWS. The database will be hosted on Amazon EC2 instances. The storage must provide high throughput and low-latency IOPS that can be provisioned independently from the volume size. Which Amazon Elastic Block Store (Amazon EBS) volume type should be utilized?",
+      "options": [
+        "General Purpose SSD (gp3)",
+        "Provisioned IOPS SSD (io2)",
+        "Throughput Optimized HDD (st1)",
+        "Cold HDD (sc1)"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Provisioned IOPS SSD (io2) volumes allow you to provision a specific level of IOPS performance independently of the volume's storage size, making it ideal for high-performance, latency-sensitive database workloads.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Provisioned IOPS SSD (io2)"
+      ]
+    },
+    {
+      "source_id": 9,
+      "bank_id": "saa-c03-gemini-0009",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "An application requires a decoupled architecture where a backend processing service needs to pull messages from a queue. The queue must ensure that messages are processed in the exact order they were received and that each message is processed exactly once. Which service should be used?",
+      "options": [
+        "Amazon SQS Standard queue",
+        "Amazon SQS FIFO queue",
+        "Amazon SNS topic",
+        "Amazon EventBridge"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon SQS FIFO (First-In-First-Out) queues guarantee that messages are processed in exact order and provide exactly-once processing functionality.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Amazon SQS FIFO queue"
+      ]
+    },
+    {
+      "source_id": 10,
+      "bank_id": "saa-c03-gemini-0010",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "A data analytics team has an Amazon Redshift cluster. They need to run complex analytical queries against massive amounts of cold data stored in an Amazon S3 datalake, without needing to load all that data continuously into the Redshift cluster's local storage. What should the solutions architect recommend?",
+      "options": [
+        "Use Amazon Athena to query S3 directly, then import results into Redshift.",
+        "Use AWS Glue to crawl the S3 data and create an AWS Glue Data Catalog.",
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster.",
+        "Configure an S3 event notification to trigger a Lambda function to load data into Redshift on demand."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon Redshift Spectrum natively extends Redshift queries so they can target Exabytes of data residing in Amazon S3 securely and quickly, without needing to explicitly load that data into the cluster first.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster."
+      ]
+    },
+    {
+      "source_id": 11,
+      "bank_id": "saa-c03-gemini-0011",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 1] A company is migrating a legacy application to AWS. The application requires a highly available relational database. The company wants to minimize operational overhead for database backups, patching, and scaling. Which solution meets these requirements?",
+      "options": [
+        "Deploy the database on Amazon EC2 instances across multiple Availability Zones.",
+        "Migrate to Amazon RDS and enable Multi-AZ deployments.",
+        "Use Amazon DynamoDB with point-in-time recovery enabled.",
+        "Deploy the database on AWS Fargate with Amazon EFS for persistent storage."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon RDS is a managed service that handles backups, patching, and scaling, reducing operational overhead. Enabling Multi-AZ provides high availability for resilience across Availability Zones.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Migrate to Amazon RDS and enable Multi-AZ deployments."
+      ]
+    },
+    {
+      "source_id": 12,
+      "bank_id": "saa-c03-gemini-0012",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 1] A web application runs on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The application occasionally experiences sudden, massive spikes in traffic within minutes, causing degraded performance before the Auto Scaling group can scale out effectively. How can a solutions architect improve the application's responsiveness to these expected spikes?",
+      "options": [
+        "Implement scheduled scaling for the Auto Scaling group.",
+        "Use target tracking scaling policies instead of simple scaling policies.",
+        "Configure predictive scaling for the Auto Scaling group.",
+        "Decrease the health check grace period of the Auto Scaling group."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Predictive scaling proactively scales out the Auto Scaling group in anticipation of predicted traffic spikes based on historical patterns, successfully avoiding the delay of pure reactive scaling.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Configure predictive scaling for the Auto Scaling group."
+      ]
+    },
+    {
+      "source_id": 13,
+      "bank_id": "saa-c03-gemini-0013",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 1] A company has a secure S3 bucket that contains highly sensitive financial documents. They must guarantee that the objects are not deleted or overwritten by anyone for exactly 7 years to meet regulatory requirements. Which feature should they implement?",
+      "options": [
+        "S3 Versioning with MFA Delete",
+        "S3 Object Lock in Governance mode",
+        "S3 Object Lock in Compliance mode",
+        "S3 Lifecycle policies transitioning to S3 Glacier Deep Archive"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "S3 Object Lock in Compliance mode prevents anyone, including the AWS account root user, from deleting or modifying an object until the retention period has completely expired.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "S3 Object Lock in Compliance mode"
+      ]
+    },
+    {
+      "source_id": 14,
+      "bank_id": "saa-c03-gemini-0014",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 1] A company wants to process streaming security data in real-time. They receive log data from thousands of endpoints globally and need to perform real-time analytics to detect anomalies before storing the data durably. Which combination of AWS services is best suited for this task?",
+      "options": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics",
+        "Amazon SQS and AWS Lambda",
+        "Amazon SNS and Amazon CloudWatch",
+        "AWS Glue and Amazon Athena"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Kinesis Data Streams collects and durably stores the streaming data. Kinesis Data Analytics natively integrates to process and analyze this streaming data in real-time using standard SQL or Apache Flink.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics"
+      ]
+    },
+    {
+      "source_id": 15,
+      "bank_id": "saa-c03-gemini-0015",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 1] A software company uses AWS Organizations to manage multiple environments. They want to ensure that no developer in the 'Development' organizational unit (OU) can provision Amazon EC2 instances larger than t3.large. What is the most operationally efficient way to enforce this?",
+      "options": [
+        "Create an IAM permissions boundary denying access to large instances and attach it to all IAM users.",
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU.",
+        "Configure an AWS Lambda function with EventBridge to terminate any large instance immediately after launch.",
+        "Use AWS Config to monitor instance launches and trigger a notification if a large instance is detected."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "SCPs offer central control over the maximum available permissions for all accounts in an OU. Attaching an SCP efficiently ensures the restriction applies universally across all member accounts without trusting local administrators.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU."
+      ]
+    },
+    {
+      "source_id": 16,
+      "bank_id": "saa-c03-gemini-0016",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 1] A solutions architect is designing an architecture for a new application that will use an Amazon Elastic File System (Amazon EFS) file system. The data is only accessed frequently for the first 30 days. After 30 days, the data is rarely accessed but must remain available within milliseconds. Which solution will meet these requirements MOST cost-effectively?",
+      "options": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days.",
+        "Use AWS DataSync to move files older than 30 days to Amazon S3 Standard-Infrequent Access.",
+        "Create a cron job on an EC2 instance to move older files to an Amazon Elastic Block Store (Amazon EBS) Cold HDD (sc1) volume.",
+        "Create an EFS lifecycle policy to transition files to the EFS Archive storage class after 30 days."
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "EFS Lifecycle Management automatically transitions files that have not been accessed for a defined period (e.g., 30 days) to the cost-optimized EFS IA storage class, which still provides millisecond retrieval latencies.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days."
+      ]
+    },
+    {
+      "source_id": 17,
+      "bank_id": "saa-c03-gemini-0017",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 1] A company's website is experiencing poor performance globally due to heavy image loading. The images are stored in an Amazon S3 bucket in the us-east-1 Region. Users in Europe and Asia are reporting high latency. Which AWS service should a solutions architect use to improve the performance for global users?",
+      "options": [
+        "AWS Global Accelerator",
+        "Amazon Route 53 with latency-based routing",
+        "Amazon CloudFront",
+        "Amazon S3 Transfer Acceleration"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon CloudFront is a globally distributed CDN that caches static content like images at edge locations near the users, drastically reducing latency for downloading these assets globally.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Amazon CloudFront"
+      ]
+    },
+    {
+      "source_id": 18,
+      "bank_id": "saa-c03-gemini-0018",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 1] A healthcare organization is migrating its patient records database to AWS. The database will be hosted on Amazon EC2 instances. The storage must provide high throughput and low-latency IOPS that can be provisioned independently from the volume size. Which Amazon Elastic Block Store (Amazon EBS) volume type should be utilized?",
+      "options": [
+        "General Purpose SSD (gp3)",
+        "Provisioned IOPS SSD (io2)",
+        "Throughput Optimized HDD (st1)",
+        "Cold HDD (sc1)"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Provisioned IOPS SSD (io2) volumes allow you to provision a specific level of IOPS performance independently of the volume's storage size, making it ideal for high-performance, latency-sensitive database workloads.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Provisioned IOPS SSD (io2)"
+      ]
+    },
+    {
+      "source_id": 19,
+      "bank_id": "saa-c03-gemini-0019",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 1] An application requires a decoupled architecture where a backend processing service needs to pull messages from a queue. The queue must ensure that messages are processed in the exact order they were received and that each message is processed exactly once. Which service should be used?",
+      "options": [
+        "Amazon SQS Standard queue",
+        "Amazon SQS FIFO queue",
+        "Amazon SNS topic",
+        "Amazon EventBridge"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon SQS FIFO (First-In-First-Out) queues guarantee that messages are processed in exact order and provide exactly-once processing functionality.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Amazon SQS FIFO queue"
+      ]
+    },
+    {
+      "source_id": 20,
+      "bank_id": "saa-c03-gemini-0020",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 1] A data analytics team has an Amazon Redshift cluster. They need to run complex analytical queries against massive amounts of cold data stored in an Amazon S3 datalake, without needing to load all that data continuously into the Redshift cluster's local storage. What should the solutions architect recommend?",
+      "options": [
+        "Use Amazon Athena to query S3 directly, then import results into Redshift.",
+        "Use AWS Glue to crawl the S3 data and create an AWS Glue Data Catalog.",
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster.",
+        "Configure an S3 event notification to trigger a Lambda function to load data into Redshift on demand."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon Redshift Spectrum natively extends Redshift queries so they can target Exabytes of data residing in Amazon S3 securely and quickly, without needing to explicitly load that data into the cluster first.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster."
+      ]
+    },
+    {
+      "source_id": 21,
+      "bank_id": "saa-c03-gemini-0021",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 2] A company is migrating a legacy application to AWS. The application requires a highly available relational database. The company wants to minimize operational overhead for database backups, patching, and scaling. Which solution meets these requirements?",
+      "options": [
+        "Deploy the database on Amazon EC2 instances across multiple Availability Zones.",
+        "Migrate to Amazon RDS and enable Multi-AZ deployments.",
+        "Use Amazon DynamoDB with point-in-time recovery enabled.",
+        "Deploy the database on AWS Fargate with Amazon EFS for persistent storage."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon RDS is a managed service that handles backups, patching, and scaling, reducing operational overhead. Enabling Multi-AZ provides high availability for resilience across Availability Zones.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Migrate to Amazon RDS and enable Multi-AZ deployments."
+      ]
+    },
+    {
+      "source_id": 22,
+      "bank_id": "saa-c03-gemini-0022",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 2] A web application runs on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The application occasionally experiences sudden, massive spikes in traffic within minutes, causing degraded performance before the Auto Scaling group can scale out effectively. How can a solutions architect improve the application's responsiveness to these expected spikes?",
+      "options": [
+        "Implement scheduled scaling for the Auto Scaling group.",
+        "Use target tracking scaling policies instead of simple scaling policies.",
+        "Configure predictive scaling for the Auto Scaling group.",
+        "Decrease the health check grace period of the Auto Scaling group."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Predictive scaling proactively scales out the Auto Scaling group in anticipation of predicted traffic spikes based on historical patterns, successfully avoiding the delay of pure reactive scaling.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Configure predictive scaling for the Auto Scaling group."
+      ]
+    },
+    {
+      "source_id": 23,
+      "bank_id": "saa-c03-gemini-0023",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 2] A company has a secure S3 bucket that contains highly sensitive financial documents. They must guarantee that the objects are not deleted or overwritten by anyone for exactly 7 years to meet regulatory requirements. Which feature should they implement?",
+      "options": [
+        "S3 Versioning with MFA Delete",
+        "S3 Object Lock in Governance mode",
+        "S3 Object Lock in Compliance mode",
+        "S3 Lifecycle policies transitioning to S3 Glacier Deep Archive"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "S3 Object Lock in Compliance mode prevents anyone, including the AWS account root user, from deleting or modifying an object until the retention period has completely expired.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "S3 Object Lock in Compliance mode"
+      ]
+    },
+    {
+      "source_id": 24,
+      "bank_id": "saa-c03-gemini-0024",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 2] A company wants to process streaming security data in real-time. They receive log data from thousands of endpoints globally and need to perform real-time analytics to detect anomalies before storing the data durably. Which combination of AWS services is best suited for this task?",
+      "options": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics",
+        "Amazon SQS and AWS Lambda",
+        "Amazon SNS and Amazon CloudWatch",
+        "AWS Glue and Amazon Athena"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Kinesis Data Streams collects and durably stores the streaming data. Kinesis Data Analytics natively integrates to process and analyze this streaming data in real-time using standard SQL or Apache Flink.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics"
+      ]
+    },
+    {
+      "source_id": 25,
+      "bank_id": "saa-c03-gemini-0025",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 2] A software company uses AWS Organizations to manage multiple environments. They want to ensure that no developer in the 'Development' organizational unit (OU) can provision Amazon EC2 instances larger than t3.large. What is the most operationally efficient way to enforce this?",
+      "options": [
+        "Create an IAM permissions boundary denying access to large instances and attach it to all IAM users.",
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU.",
+        "Configure an AWS Lambda function with EventBridge to terminate any large instance immediately after launch.",
+        "Use AWS Config to monitor instance launches and trigger a notification if a large instance is detected."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "SCPs offer central control over the maximum available permissions for all accounts in an OU. Attaching an SCP efficiently ensures the restriction applies universally across all member accounts without trusting local administrators.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU."
+      ]
+    },
+    {
+      "source_id": 26,
+      "bank_id": "saa-c03-gemini-0026",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 2] A solutions architect is designing an architecture for a new application that will use an Amazon Elastic File System (Amazon EFS) file system. The data is only accessed frequently for the first 30 days. After 30 days, the data is rarely accessed but must remain available within milliseconds. Which solution will meet these requirements MOST cost-effectively?",
+      "options": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days.",
+        "Use AWS DataSync to move files older than 30 days to Amazon S3 Standard-Infrequent Access.",
+        "Create a cron job on an EC2 instance to move older files to an Amazon Elastic Block Store (Amazon EBS) Cold HDD (sc1) volume.",
+        "Create an EFS lifecycle policy to transition files to the EFS Archive storage class after 30 days."
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "EFS Lifecycle Management automatically transitions files that have not been accessed for a defined period (e.g., 30 days) to the cost-optimized EFS IA storage class, which still provides millisecond retrieval latencies.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days."
+      ]
+    },
+    {
+      "source_id": 27,
+      "bank_id": "saa-c03-gemini-0027",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 2] A company's website is experiencing poor performance globally due to heavy image loading. The images are stored in an Amazon S3 bucket in the us-east-1 Region. Users in Europe and Asia are reporting high latency. Which AWS service should a solutions architect use to improve the performance for global users?",
+      "options": [
+        "AWS Global Accelerator",
+        "Amazon Route 53 with latency-based routing",
+        "Amazon CloudFront",
+        "Amazon S3 Transfer Acceleration"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon CloudFront is a globally distributed CDN that caches static content like images at edge locations near the users, drastically reducing latency for downloading these assets globally.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Amazon CloudFront"
+      ]
+    },
+    {
+      "source_id": 28,
+      "bank_id": "saa-c03-gemini-0028",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 2] A healthcare organization is migrating its patient records database to AWS. The database will be hosted on Amazon EC2 instances. The storage must provide high throughput and low-latency IOPS that can be provisioned independently from the volume size. Which Amazon Elastic Block Store (Amazon EBS) volume type should be utilized?",
+      "options": [
+        "General Purpose SSD (gp3)",
+        "Provisioned IOPS SSD (io2)",
+        "Throughput Optimized HDD (st1)",
+        "Cold HDD (sc1)"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Provisioned IOPS SSD (io2) volumes allow you to provision a specific level of IOPS performance independently of the volume's storage size, making it ideal for high-performance, latency-sensitive database workloads.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Provisioned IOPS SSD (io2)"
+      ]
+    },
+    {
+      "source_id": 29,
+      "bank_id": "saa-c03-gemini-0029",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 2] An application requires a decoupled architecture where a backend processing service needs to pull messages from a queue. The queue must ensure that messages are processed in the exact order they were received and that each message is processed exactly once. Which service should be used?",
+      "options": [
+        "Amazon SQS Standard queue",
+        "Amazon SQS FIFO queue",
+        "Amazon SNS topic",
+        "Amazon EventBridge"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon SQS FIFO (First-In-First-Out) queues guarantee that messages are processed in exact order and provide exactly-once processing functionality.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Amazon SQS FIFO queue"
+      ]
+    },
+    {
+      "source_id": 30,
+      "bank_id": "saa-c03-gemini-0030",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 2] A data analytics team has an Amazon Redshift cluster. They need to run complex analytical queries against massive amounts of cold data stored in an Amazon S3 datalake, without needing to load all that data continuously into the Redshift cluster's local storage. What should the solutions architect recommend?",
+      "options": [
+        "Use Amazon Athena to query S3 directly, then import results into Redshift.",
+        "Use AWS Glue to crawl the S3 data and create an AWS Glue Data Catalog.",
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster.",
+        "Configure an S3 event notification to trigger a Lambda function to load data into Redshift on demand."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon Redshift Spectrum natively extends Redshift queries so they can target Exabytes of data residing in Amazon S3 securely and quickly, without needing to explicitly load that data into the cluster first.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster."
+      ]
+    },
+    {
+      "source_id": 31,
+      "bank_id": "saa-c03-gemini-0031",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 3] A company is migrating a legacy application to AWS. The application requires a highly available relational database. The company wants to minimize operational overhead for database backups, patching, and scaling. Which solution meets these requirements?",
+      "options": [
+        "Deploy the database on Amazon EC2 instances across multiple Availability Zones.",
+        "Migrate to Amazon RDS and enable Multi-AZ deployments.",
+        "Use Amazon DynamoDB with point-in-time recovery enabled.",
+        "Deploy the database on AWS Fargate with Amazon EFS for persistent storage."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon RDS is a managed service that handles backups, patching, and scaling, reducing operational overhead. Enabling Multi-AZ provides high availability for resilience across Availability Zones.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Migrate to Amazon RDS and enable Multi-AZ deployments."
+      ]
+    },
+    {
+      "source_id": 32,
+      "bank_id": "saa-c03-gemini-0032",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 3] A web application runs on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The application occasionally experiences sudden, massive spikes in traffic within minutes, causing degraded performance before the Auto Scaling group can scale out effectively. How can a solutions architect improve the application's responsiveness to these expected spikes?",
+      "options": [
+        "Implement scheduled scaling for the Auto Scaling group.",
+        "Use target tracking scaling policies instead of simple scaling policies.",
+        "Configure predictive scaling for the Auto Scaling group.",
+        "Decrease the health check grace period of the Auto Scaling group."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Predictive scaling proactively scales out the Auto Scaling group in anticipation of predicted traffic spikes based on historical patterns, successfully avoiding the delay of pure reactive scaling.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Configure predictive scaling for the Auto Scaling group."
+      ]
+    },
+    {
+      "source_id": 33,
+      "bank_id": "saa-c03-gemini-0033",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 3] A company has a secure S3 bucket that contains highly sensitive financial documents. They must guarantee that the objects are not deleted or overwritten by anyone for exactly 7 years to meet regulatory requirements. Which feature should they implement?",
+      "options": [
+        "S3 Versioning with MFA Delete",
+        "S3 Object Lock in Governance mode",
+        "S3 Object Lock in Compliance mode",
+        "S3 Lifecycle policies transitioning to S3 Glacier Deep Archive"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "S3 Object Lock in Compliance mode prevents anyone, including the AWS account root user, from deleting or modifying an object until the retention period has completely expired.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "S3 Object Lock in Compliance mode"
+      ]
+    },
+    {
+      "source_id": 34,
+      "bank_id": "saa-c03-gemini-0034",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 3] A company wants to process streaming security data in real-time. They receive log data from thousands of endpoints globally and need to perform real-time analytics to detect anomalies before storing the data durably. Which combination of AWS services is best suited for this task?",
+      "options": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics",
+        "Amazon SQS and AWS Lambda",
+        "Amazon SNS and Amazon CloudWatch",
+        "AWS Glue and Amazon Athena"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Kinesis Data Streams collects and durably stores the streaming data. Kinesis Data Analytics natively integrates to process and analyze this streaming data in real-time using standard SQL or Apache Flink.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics"
+      ]
+    },
+    {
+      "source_id": 35,
+      "bank_id": "saa-c03-gemini-0035",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 3] A software company uses AWS Organizations to manage multiple environments. They want to ensure that no developer in the 'Development' organizational unit (OU) can provision Amazon EC2 instances larger than t3.large. What is the most operationally efficient way to enforce this?",
+      "options": [
+        "Create an IAM permissions boundary denying access to large instances and attach it to all IAM users.",
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU.",
+        "Configure an AWS Lambda function with EventBridge to terminate any large instance immediately after launch.",
+        "Use AWS Config to monitor instance launches and trigger a notification if a large instance is detected."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "SCPs offer central control over the maximum available permissions for all accounts in an OU. Attaching an SCP efficiently ensures the restriction applies universally across all member accounts without trusting local administrators.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU."
+      ]
+    },
+    {
+      "source_id": 36,
+      "bank_id": "saa-c03-gemini-0036",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 3] A solutions architect is designing an architecture for a new application that will use an Amazon Elastic File System (Amazon EFS) file system. The data is only accessed frequently for the first 30 days. After 30 days, the data is rarely accessed but must remain available within milliseconds. Which solution will meet these requirements MOST cost-effectively?",
+      "options": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days.",
+        "Use AWS DataSync to move files older than 30 days to Amazon S3 Standard-Infrequent Access.",
+        "Create a cron job on an EC2 instance to move older files to an Amazon Elastic Block Store (Amazon EBS) Cold HDD (sc1) volume.",
+        "Create an EFS lifecycle policy to transition files to the EFS Archive storage class after 30 days."
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "EFS Lifecycle Management automatically transitions files that have not been accessed for a defined period (e.g., 30 days) to the cost-optimized EFS IA storage class, which still provides millisecond retrieval latencies.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days."
+      ]
+    },
+    {
+      "source_id": 37,
+      "bank_id": "saa-c03-gemini-0037",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 3] A company's website is experiencing poor performance globally due to heavy image loading. The images are stored in an Amazon S3 bucket in the us-east-1 Region. Users in Europe and Asia are reporting high latency. Which AWS service should a solutions architect use to improve the performance for global users?",
+      "options": [
+        "AWS Global Accelerator",
+        "Amazon Route 53 with latency-based routing",
+        "Amazon CloudFront",
+        "Amazon S3 Transfer Acceleration"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon CloudFront is a globally distributed CDN that caches static content like images at edge locations near the users, drastically reducing latency for downloading these assets globally.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Amazon CloudFront"
+      ]
+    },
+    {
+      "source_id": 38,
+      "bank_id": "saa-c03-gemini-0038",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 3] A healthcare organization is migrating its patient records database to AWS. The database will be hosted on Amazon EC2 instances. The storage must provide high throughput and low-latency IOPS that can be provisioned independently from the volume size. Which Amazon Elastic Block Store (Amazon EBS) volume type should be utilized?",
+      "options": [
+        "General Purpose SSD (gp3)",
+        "Provisioned IOPS SSD (io2)",
+        "Throughput Optimized HDD (st1)",
+        "Cold HDD (sc1)"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Provisioned IOPS SSD (io2) volumes allow you to provision a specific level of IOPS performance independently of the volume's storage size, making it ideal for high-performance, latency-sensitive database workloads.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Provisioned IOPS SSD (io2)"
+      ]
+    },
+    {
+      "source_id": 39,
+      "bank_id": "saa-c03-gemini-0039",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 3] An application requires a decoupled architecture where a backend processing service needs to pull messages from a queue. The queue must ensure that messages are processed in the exact order they were received and that each message is processed exactly once. Which service should be used?",
+      "options": [
+        "Amazon SQS Standard queue",
+        "Amazon SQS FIFO queue",
+        "Amazon SNS topic",
+        "Amazon EventBridge"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon SQS FIFO (First-In-First-Out) queues guarantee that messages are processed in exact order and provide exactly-once processing functionality.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Amazon SQS FIFO queue"
+      ]
+    },
+    {
+      "source_id": 40,
+      "bank_id": "saa-c03-gemini-0040",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 3] A data analytics team has an Amazon Redshift cluster. They need to run complex analytical queries against massive amounts of cold data stored in an Amazon S3 datalake, without needing to load all that data continuously into the Redshift cluster's local storage. What should the solutions architect recommend?",
+      "options": [
+        "Use Amazon Athena to query S3 directly, then import results into Redshift.",
+        "Use AWS Glue to crawl the S3 data and create an AWS Glue Data Catalog.",
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster.",
+        "Configure an S3 event notification to trigger a Lambda function to load data into Redshift on demand."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon Redshift Spectrum natively extends Redshift queries so they can target Exabytes of data residing in Amazon S3 securely and quickly, without needing to explicitly load that data into the cluster first.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster."
+      ]
+    },
+    {
+      "source_id": 41,
+      "bank_id": "saa-c03-gemini-0041",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 4] A company is migrating a legacy application to AWS. The application requires a highly available relational database. The company wants to minimize operational overhead for database backups, patching, and scaling. Which solution meets these requirements?",
+      "options": [
+        "Deploy the database on Amazon EC2 instances across multiple Availability Zones.",
+        "Migrate to Amazon RDS and enable Multi-AZ deployments.",
+        "Use Amazon DynamoDB with point-in-time recovery enabled.",
+        "Deploy the database on AWS Fargate with Amazon EFS for persistent storage."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon RDS is a managed service that handles backups, patching, and scaling, reducing operational overhead. Enabling Multi-AZ provides high availability for resilience across Availability Zones.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Migrate to Amazon RDS and enable Multi-AZ deployments."
+      ]
+    },
+    {
+      "source_id": 42,
+      "bank_id": "saa-c03-gemini-0042",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 4] A web application runs on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The application occasionally experiences sudden, massive spikes in traffic within minutes, causing degraded performance before the Auto Scaling group can scale out effectively. How can a solutions architect improve the application's responsiveness to these expected spikes?",
+      "options": [
+        "Implement scheduled scaling for the Auto Scaling group.",
+        "Use target tracking scaling policies instead of simple scaling policies.",
+        "Configure predictive scaling for the Auto Scaling group.",
+        "Decrease the health check grace period of the Auto Scaling group."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Predictive scaling proactively scales out the Auto Scaling group in anticipation of predicted traffic spikes based on historical patterns, successfully avoiding the delay of pure reactive scaling.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Configure predictive scaling for the Auto Scaling group."
+      ]
+    },
+    {
+      "source_id": 43,
+      "bank_id": "saa-c03-gemini-0043",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 4] A company has a secure S3 bucket that contains highly sensitive financial documents. They must guarantee that the objects are not deleted or overwritten by anyone for exactly 7 years to meet regulatory requirements. Which feature should they implement?",
+      "options": [
+        "S3 Versioning with MFA Delete",
+        "S3 Object Lock in Governance mode",
+        "S3 Object Lock in Compliance mode",
+        "S3 Lifecycle policies transitioning to S3 Glacier Deep Archive"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "S3 Object Lock in Compliance mode prevents anyone, including the AWS account root user, from deleting or modifying an object until the retention period has completely expired.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "S3 Object Lock in Compliance mode"
+      ]
+    },
+    {
+      "source_id": 44,
+      "bank_id": "saa-c03-gemini-0044",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 4] A company wants to process streaming security data in real-time. They receive log data from thousands of endpoints globally and need to perform real-time analytics to detect anomalies before storing the data durably. Which combination of AWS services is best suited for this task?",
+      "options": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics",
+        "Amazon SQS and AWS Lambda",
+        "Amazon SNS and Amazon CloudWatch",
+        "AWS Glue and Amazon Athena"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Kinesis Data Streams collects and durably stores the streaming data. Kinesis Data Analytics natively integrates to process and analyze this streaming data in real-time using standard SQL or Apache Flink.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics"
+      ]
+    },
+    {
+      "source_id": 45,
+      "bank_id": "saa-c03-gemini-0045",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 4] A software company uses AWS Organizations to manage multiple environments. They want to ensure that no developer in the 'Development' organizational unit (OU) can provision Amazon EC2 instances larger than t3.large. What is the most operationally efficient way to enforce this?",
+      "options": [
+        "Create an IAM permissions boundary denying access to large instances and attach it to all IAM users.",
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU.",
+        "Configure an AWS Lambda function with EventBridge to terminate any large instance immediately after launch.",
+        "Use AWS Config to monitor instance launches and trigger a notification if a large instance is detected."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "SCPs offer central control over the maximum available permissions for all accounts in an OU. Attaching an SCP efficiently ensures the restriction applies universally across all member accounts without trusting local administrators.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU."
+      ]
+    },
+    {
+      "source_id": 46,
+      "bank_id": "saa-c03-gemini-0046",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 4] A solutions architect is designing an architecture for a new application that will use an Amazon Elastic File System (Amazon EFS) file system. The data is only accessed frequently for the first 30 days. After 30 days, the data is rarely accessed but must remain available within milliseconds. Which solution will meet these requirements MOST cost-effectively?",
+      "options": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days.",
+        "Use AWS DataSync to move files older than 30 days to Amazon S3 Standard-Infrequent Access.",
+        "Create a cron job on an EC2 instance to move older files to an Amazon Elastic Block Store (Amazon EBS) Cold HDD (sc1) volume.",
+        "Create an EFS lifecycle policy to transition files to the EFS Archive storage class after 30 days."
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "EFS Lifecycle Management automatically transitions files that have not been accessed for a defined period (e.g., 30 days) to the cost-optimized EFS IA storage class, which still provides millisecond retrieval latencies.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days."
+      ]
+    },
+    {
+      "source_id": 47,
+      "bank_id": "saa-c03-gemini-0047",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 4] A company's website is experiencing poor performance globally due to heavy image loading. The images are stored in an Amazon S3 bucket in the us-east-1 Region. Users in Europe and Asia are reporting high latency. Which AWS service should a solutions architect use to improve the performance for global users?",
+      "options": [
+        "AWS Global Accelerator",
+        "Amazon Route 53 with latency-based routing",
+        "Amazon CloudFront",
+        "Amazon S3 Transfer Acceleration"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon CloudFront is a globally distributed CDN that caches static content like images at edge locations near the users, drastically reducing latency for downloading these assets globally.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Amazon CloudFront"
+      ]
+    },
+    {
+      "source_id": 48,
+      "bank_id": "saa-c03-gemini-0048",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 4] A healthcare organization is migrating its patient records database to AWS. The database will be hosted on Amazon EC2 instances. The storage must provide high throughput and low-latency IOPS that can be provisioned independently from the volume size. Which Amazon Elastic Block Store (Amazon EBS) volume type should be utilized?",
+      "options": [
+        "General Purpose SSD (gp3)",
+        "Provisioned IOPS SSD (io2)",
+        "Throughput Optimized HDD (st1)",
+        "Cold HDD (sc1)"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Provisioned IOPS SSD (io2) volumes allow you to provision a specific level of IOPS performance independently of the volume's storage size, making it ideal for high-performance, latency-sensitive database workloads.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Provisioned IOPS SSD (io2)"
+      ]
+    },
+    {
+      "source_id": 49,
+      "bank_id": "saa-c03-gemini-0049",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 4] An application requires a decoupled architecture where a backend processing service needs to pull messages from a queue. The queue must ensure that messages are processed in the exact order they were received and that each message is processed exactly once. Which service should be used?",
+      "options": [
+        "Amazon SQS Standard queue",
+        "Amazon SQS FIFO queue",
+        "Amazon SNS topic",
+        "Amazon EventBridge"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon SQS FIFO (First-In-First-Out) queues guarantee that messages are processed in exact order and provide exactly-once processing functionality.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Amazon SQS FIFO queue"
+      ]
+    },
+    {
+      "source_id": 50,
+      "bank_id": "saa-c03-gemini-0050",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 4] A data analytics team has an Amazon Redshift cluster. They need to run complex analytical queries against massive amounts of cold data stored in an Amazon S3 datalake, without needing to load all that data continuously into the Redshift cluster's local storage. What should the solutions architect recommend?",
+      "options": [
+        "Use Amazon Athena to query S3 directly, then import results into Redshift.",
+        "Use AWS Glue to crawl the S3 data and create an AWS Glue Data Catalog.",
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster.",
+        "Configure an S3 event notification to trigger a Lambda function to load data into Redshift on demand."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon Redshift Spectrum natively extends Redshift queries so they can target Exabytes of data residing in Amazon S3 securely and quickly, without needing to explicitly load that data into the cluster first.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster."
+      ]
+    },
+    {
+      "source_id": 51,
+      "bank_id": "saa-c03-gemini-0051",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 5] A company is migrating a legacy application to AWS. The application requires a highly available relational database. The company wants to minimize operational overhead for database backups, patching, and scaling. Which solution meets these requirements?",
+      "options": [
+        "Deploy the database on Amazon EC2 instances across multiple Availability Zones.",
+        "Migrate to Amazon RDS and enable Multi-AZ deployments.",
+        "Use Amazon DynamoDB with point-in-time recovery enabled.",
+        "Deploy the database on AWS Fargate with Amazon EFS for persistent storage."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon RDS is a managed service that handles backups, patching, and scaling, reducing operational overhead. Enabling Multi-AZ provides high availability for resilience across Availability Zones.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Migrate to Amazon RDS and enable Multi-AZ deployments."
+      ]
+    },
+    {
+      "source_id": 52,
+      "bank_id": "saa-c03-gemini-0052",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 5] A web application runs on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The application occasionally experiences sudden, massive spikes in traffic within minutes, causing degraded performance before the Auto Scaling group can scale out effectively. How can a solutions architect improve the application's responsiveness to these expected spikes?",
+      "options": [
+        "Implement scheduled scaling for the Auto Scaling group.",
+        "Use target tracking scaling policies instead of simple scaling policies.",
+        "Configure predictive scaling for the Auto Scaling group.",
+        "Decrease the health check grace period of the Auto Scaling group."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Predictive scaling proactively scales out the Auto Scaling group in anticipation of predicted traffic spikes based on historical patterns, successfully avoiding the delay of pure reactive scaling.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Configure predictive scaling for the Auto Scaling group."
+      ]
+    },
+    {
+      "source_id": 53,
+      "bank_id": "saa-c03-gemini-0053",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 5] A company has a secure S3 bucket that contains highly sensitive financial documents. They must guarantee that the objects are not deleted or overwritten by anyone for exactly 7 years to meet regulatory requirements. Which feature should they implement?",
+      "options": [
+        "S3 Versioning with MFA Delete",
+        "S3 Object Lock in Governance mode",
+        "S3 Object Lock in Compliance mode",
+        "S3 Lifecycle policies transitioning to S3 Glacier Deep Archive"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "S3 Object Lock in Compliance mode prevents anyone, including the AWS account root user, from deleting or modifying an object until the retention period has completely expired.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "S3 Object Lock in Compliance mode"
+      ]
+    },
+    {
+      "source_id": 54,
+      "bank_id": "saa-c03-gemini-0054",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 5] A company wants to process streaming security data in real-time. They receive log data from thousands of endpoints globally and need to perform real-time analytics to detect anomalies before storing the data durably. Which combination of AWS services is best suited for this task?",
+      "options": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics",
+        "Amazon SQS and AWS Lambda",
+        "Amazon SNS and Amazon CloudWatch",
+        "AWS Glue and Amazon Athena"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Kinesis Data Streams collects and durably stores the streaming data. Kinesis Data Analytics natively integrates to process and analyze this streaming data in real-time using standard SQL or Apache Flink.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics"
+      ]
+    },
+    {
+      "source_id": 55,
+      "bank_id": "saa-c03-gemini-0055",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 5] A software company uses AWS Organizations to manage multiple environments. They want to ensure that no developer in the 'Development' organizational unit (OU) can provision Amazon EC2 instances larger than t3.large. What is the most operationally efficient way to enforce this?",
+      "options": [
+        "Create an IAM permissions boundary denying access to large instances and attach it to all IAM users.",
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU.",
+        "Configure an AWS Lambda function with EventBridge to terminate any large instance immediately after launch.",
+        "Use AWS Config to monitor instance launches and trigger a notification if a large instance is detected."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "SCPs offer central control over the maximum available permissions for all accounts in an OU. Attaching an SCP efficiently ensures the restriction applies universally across all member accounts without trusting local administrators.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU."
+      ]
+    },
+    {
+      "source_id": 56,
+      "bank_id": "saa-c03-gemini-0056",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 5] A solutions architect is designing an architecture for a new application that will use an Amazon Elastic File System (Amazon EFS) file system. The data is only accessed frequently for the first 30 days. After 30 days, the data is rarely accessed but must remain available within milliseconds. Which solution will meet these requirements MOST cost-effectively?",
+      "options": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days.",
+        "Use AWS DataSync to move files older than 30 days to Amazon S3 Standard-Infrequent Access.",
+        "Create a cron job on an EC2 instance to move older files to an Amazon Elastic Block Store (Amazon EBS) Cold HDD (sc1) volume.",
+        "Create an EFS lifecycle policy to transition files to the EFS Archive storage class after 30 days."
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "EFS Lifecycle Management automatically transitions files that have not been accessed for a defined period (e.g., 30 days) to the cost-optimized EFS IA storage class, which still provides millisecond retrieval latencies.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days."
+      ]
+    },
+    {
+      "source_id": 57,
+      "bank_id": "saa-c03-gemini-0057",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 5] A company's website is experiencing poor performance globally due to heavy image loading. The images are stored in an Amazon S3 bucket in the us-east-1 Region. Users in Europe and Asia are reporting high latency. Which AWS service should a solutions architect use to improve the performance for global users?",
+      "options": [
+        "AWS Global Accelerator",
+        "Amazon Route 53 with latency-based routing",
+        "Amazon CloudFront",
+        "Amazon S3 Transfer Acceleration"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon CloudFront is a globally distributed CDN that caches static content like images at edge locations near the users, drastically reducing latency for downloading these assets globally.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Amazon CloudFront"
+      ]
+    },
+    {
+      "source_id": 58,
+      "bank_id": "saa-c03-gemini-0058",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 5] A healthcare organization is migrating its patient records database to AWS. The database will be hosted on Amazon EC2 instances. The storage must provide high throughput and low-latency IOPS that can be provisioned independently from the volume size. Which Amazon Elastic Block Store (Amazon EBS) volume type should be utilized?",
+      "options": [
+        "General Purpose SSD (gp3)",
+        "Provisioned IOPS SSD (io2)",
+        "Throughput Optimized HDD (st1)",
+        "Cold HDD (sc1)"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Provisioned IOPS SSD (io2) volumes allow you to provision a specific level of IOPS performance independently of the volume's storage size, making it ideal for high-performance, latency-sensitive database workloads.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Provisioned IOPS SSD (io2)"
+      ]
+    },
+    {
+      "source_id": 59,
+      "bank_id": "saa-c03-gemini-0059",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 5] An application requires a decoupled architecture where a backend processing service needs to pull messages from a queue. The queue must ensure that messages are processed in the exact order they were received and that each message is processed exactly once. Which service should be used?",
+      "options": [
+        "Amazon SQS Standard queue",
+        "Amazon SQS FIFO queue",
+        "Amazon SNS topic",
+        "Amazon EventBridge"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon SQS FIFO (First-In-First-Out) queues guarantee that messages are processed in exact order and provide exactly-once processing functionality.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Amazon SQS FIFO queue"
+      ]
+    },
+    {
+      "source_id": 60,
+      "bank_id": "saa-c03-gemini-0060",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 5] A data analytics team has an Amazon Redshift cluster. They need to run complex analytical queries against massive amounts of cold data stored in an Amazon S3 datalake, without needing to load all that data continuously into the Redshift cluster's local storage. What should the solutions architect recommend?",
+      "options": [
+        "Use Amazon Athena to query S3 directly, then import results into Redshift.",
+        "Use AWS Glue to crawl the S3 data and create an AWS Glue Data Catalog.",
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster.",
+        "Configure an S3 event notification to trigger a Lambda function to load data into Redshift on demand."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon Redshift Spectrum natively extends Redshift queries so they can target Exabytes of data residing in Amazon S3 securely and quickly, without needing to explicitly load that data into the cluster first.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster."
+      ]
+    },
+    {
+      "source_id": 61,
+      "bank_id": "saa-c03-gemini-0061",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 6] A company is migrating a legacy application to AWS. The application requires a highly available relational database. The company wants to minimize operational overhead for database backups, patching, and scaling. Which solution meets these requirements?",
+      "options": [
+        "Deploy the database on Amazon EC2 instances across multiple Availability Zones.",
+        "Migrate to Amazon RDS and enable Multi-AZ deployments.",
+        "Use Amazon DynamoDB with point-in-time recovery enabled.",
+        "Deploy the database on AWS Fargate with Amazon EFS for persistent storage."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon RDS is a managed service that handles backups, patching, and scaling, reducing operational overhead. Enabling Multi-AZ provides high availability for resilience across Availability Zones.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Migrate to Amazon RDS and enable Multi-AZ deployments."
+      ]
+    },
+    {
+      "source_id": 62,
+      "bank_id": "saa-c03-gemini-0062",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 6] A web application runs on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The application occasionally experiences sudden, massive spikes in traffic within minutes, causing degraded performance before the Auto Scaling group can scale out effectively. How can a solutions architect improve the application's responsiveness to these expected spikes?",
+      "options": [
+        "Implement scheduled scaling for the Auto Scaling group.",
+        "Use target tracking scaling policies instead of simple scaling policies.",
+        "Configure predictive scaling for the Auto Scaling group.",
+        "Decrease the health check grace period of the Auto Scaling group."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Predictive scaling proactively scales out the Auto Scaling group in anticipation of predicted traffic spikes based on historical patterns, successfully avoiding the delay of pure reactive scaling.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Configure predictive scaling for the Auto Scaling group."
+      ]
+    },
+    {
+      "source_id": 63,
+      "bank_id": "saa-c03-gemini-0063",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 6] A company has a secure S3 bucket that contains highly sensitive financial documents. They must guarantee that the objects are not deleted or overwritten by anyone for exactly 7 years to meet regulatory requirements. Which feature should they implement?",
+      "options": [
+        "S3 Versioning with MFA Delete",
+        "S3 Object Lock in Governance mode",
+        "S3 Object Lock in Compliance mode",
+        "S3 Lifecycle policies transitioning to S3 Glacier Deep Archive"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "S3 Object Lock in Compliance mode prevents anyone, including the AWS account root user, from deleting or modifying an object until the retention period has completely expired.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "S3 Object Lock in Compliance mode"
+      ]
+    },
+    {
+      "source_id": 64,
+      "bank_id": "saa-c03-gemini-0064",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 6] A company wants to process streaming security data in real-time. They receive log data from thousands of endpoints globally and need to perform real-time analytics to detect anomalies before storing the data durably. Which combination of AWS services is best suited for this task?",
+      "options": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics",
+        "Amazon SQS and AWS Lambda",
+        "Amazon SNS and Amazon CloudWatch",
+        "AWS Glue and Amazon Athena"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Kinesis Data Streams collects and durably stores the streaming data. Kinesis Data Analytics natively integrates to process and analyze this streaming data in real-time using standard SQL or Apache Flink.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics"
+      ]
+    },
+    {
+      "source_id": 65,
+      "bank_id": "saa-c03-gemini-0065",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 6] A software company uses AWS Organizations to manage multiple environments. They want to ensure that no developer in the 'Development' organizational unit (OU) can provision Amazon EC2 instances larger than t3.large. What is the most operationally efficient way to enforce this?",
+      "options": [
+        "Create an IAM permissions boundary denying access to large instances and attach it to all IAM users.",
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU.",
+        "Configure an AWS Lambda function with EventBridge to terminate any large instance immediately after launch.",
+        "Use AWS Config to monitor instance launches and trigger a notification if a large instance is detected."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "SCPs offer central control over the maximum available permissions for all accounts in an OU. Attaching an SCP efficiently ensures the restriction applies universally across all member accounts without trusting local administrators.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU."
+      ]
+    },
+    {
+      "source_id": 66,
+      "bank_id": "saa-c03-gemini-0066",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 6] A solutions architect is designing an architecture for a new application that will use an Amazon Elastic File System (Amazon EFS) file system. The data is only accessed frequently for the first 30 days. After 30 days, the data is rarely accessed but must remain available within milliseconds. Which solution will meet these requirements MOST cost-effectively?",
+      "options": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days.",
+        "Use AWS DataSync to move files older than 30 days to Amazon S3 Standard-Infrequent Access.",
+        "Create a cron job on an EC2 instance to move older files to an Amazon Elastic Block Store (Amazon EBS) Cold HDD (sc1) volume.",
+        "Create an EFS lifecycle policy to transition files to the EFS Archive storage class after 30 days."
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "EFS Lifecycle Management automatically transitions files that have not been accessed for a defined period (e.g., 30 days) to the cost-optimized EFS IA storage class, which still provides millisecond retrieval latencies.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days."
+      ]
+    },
+    {
+      "source_id": 67,
+      "bank_id": "saa-c03-gemini-0067",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 6] A company's website is experiencing poor performance globally due to heavy image loading. The images are stored in an Amazon S3 bucket in the us-east-1 Region. Users in Europe and Asia are reporting high latency. Which AWS service should a solutions architect use to improve the performance for global users?",
+      "options": [
+        "AWS Global Accelerator",
+        "Amazon Route 53 with latency-based routing",
+        "Amazon CloudFront",
+        "Amazon S3 Transfer Acceleration"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon CloudFront is a globally distributed CDN that caches static content like images at edge locations near the users, drastically reducing latency for downloading these assets globally.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Amazon CloudFront"
+      ]
+    },
+    {
+      "source_id": 68,
+      "bank_id": "saa-c03-gemini-0068",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 6] A healthcare organization is migrating its patient records database to AWS. The database will be hosted on Amazon EC2 instances. The storage must provide high throughput and low-latency IOPS that can be provisioned independently from the volume size. Which Amazon Elastic Block Store (Amazon EBS) volume type should be utilized?",
+      "options": [
+        "General Purpose SSD (gp3)",
+        "Provisioned IOPS SSD (io2)",
+        "Throughput Optimized HDD (st1)",
+        "Cold HDD (sc1)"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Provisioned IOPS SSD (io2) volumes allow you to provision a specific level of IOPS performance independently of the volume's storage size, making it ideal for high-performance, latency-sensitive database workloads.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Provisioned IOPS SSD (io2)"
+      ]
+    },
+    {
+      "source_id": 69,
+      "bank_id": "saa-c03-gemini-0069",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 6] An application requires a decoupled architecture where a backend processing service needs to pull messages from a queue. The queue must ensure that messages are processed in the exact order they were received and that each message is processed exactly once. Which service should be used?",
+      "options": [
+        "Amazon SQS Standard queue",
+        "Amazon SQS FIFO queue",
+        "Amazon SNS topic",
+        "Amazon EventBridge"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon SQS FIFO (First-In-First-Out) queues guarantee that messages are processed in exact order and provide exactly-once processing functionality.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Amazon SQS FIFO queue"
+      ]
+    },
+    {
+      "source_id": 70,
+      "bank_id": "saa-c03-gemini-0070",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 6] A data analytics team has an Amazon Redshift cluster. They need to run complex analytical queries against massive amounts of cold data stored in an Amazon S3 datalake, without needing to load all that data continuously into the Redshift cluster's local storage. What should the solutions architect recommend?",
+      "options": [
+        "Use Amazon Athena to query S3 directly, then import results into Redshift.",
+        "Use AWS Glue to crawl the S3 data and create an AWS Glue Data Catalog.",
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster.",
+        "Configure an S3 event notification to trigger a Lambda function to load data into Redshift on demand."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon Redshift Spectrum natively extends Redshift queries so they can target Exabytes of data residing in Amazon S3 securely and quickly, without needing to explicitly load that data into the cluster first.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster."
+      ]
+    },
+    {
+      "source_id": 71,
+      "bank_id": "saa-c03-gemini-0071",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 7] A company is migrating a legacy application to AWS. The application requires a highly available relational database. The company wants to minimize operational overhead for database backups, patching, and scaling. Which solution meets these requirements?",
+      "options": [
+        "Deploy the database on Amazon EC2 instances across multiple Availability Zones.",
+        "Migrate to Amazon RDS and enable Multi-AZ deployments.",
+        "Use Amazon DynamoDB with point-in-time recovery enabled.",
+        "Deploy the database on AWS Fargate with Amazon EFS for persistent storage."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon RDS is a managed service that handles backups, patching, and scaling, reducing operational overhead. Enabling Multi-AZ provides high availability for resilience across Availability Zones.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Migrate to Amazon RDS and enable Multi-AZ deployments."
+      ]
+    },
+    {
+      "source_id": 72,
+      "bank_id": "saa-c03-gemini-0072",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 7] A web application runs on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The application occasionally experiences sudden, massive spikes in traffic within minutes, causing degraded performance before the Auto Scaling group can scale out effectively. How can a solutions architect improve the application's responsiveness to these expected spikes?",
+      "options": [
+        "Implement scheduled scaling for the Auto Scaling group.",
+        "Use target tracking scaling policies instead of simple scaling policies.",
+        "Configure predictive scaling for the Auto Scaling group.",
+        "Decrease the health check grace period of the Auto Scaling group."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Predictive scaling proactively scales out the Auto Scaling group in anticipation of predicted traffic spikes based on historical patterns, successfully avoiding the delay of pure reactive scaling.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Configure predictive scaling for the Auto Scaling group."
+      ]
+    },
+    {
+      "source_id": 73,
+      "bank_id": "saa-c03-gemini-0073",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 7] A company has a secure S3 bucket that contains highly sensitive financial documents. They must guarantee that the objects are not deleted or overwritten by anyone for exactly 7 years to meet regulatory requirements. Which feature should they implement?",
+      "options": [
+        "S3 Versioning with MFA Delete",
+        "S3 Object Lock in Governance mode",
+        "S3 Object Lock in Compliance mode",
+        "S3 Lifecycle policies transitioning to S3 Glacier Deep Archive"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "S3 Object Lock in Compliance mode prevents anyone, including the AWS account root user, from deleting or modifying an object until the retention period has completely expired.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "S3 Object Lock in Compliance mode"
+      ]
+    },
+    {
+      "source_id": 74,
+      "bank_id": "saa-c03-gemini-0074",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 7] A company wants to process streaming security data in real-time. They receive log data from thousands of endpoints globally and need to perform real-time analytics to detect anomalies before storing the data durably. Which combination of AWS services is best suited for this task?",
+      "options": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics",
+        "Amazon SQS and AWS Lambda",
+        "Amazon SNS and Amazon CloudWatch",
+        "AWS Glue and Amazon Athena"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Kinesis Data Streams collects and durably stores the streaming data. Kinesis Data Analytics natively integrates to process and analyze this streaming data in real-time using standard SQL or Apache Flink.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics"
+      ]
+    },
+    {
+      "source_id": 75,
+      "bank_id": "saa-c03-gemini-0075",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 7] A software company uses AWS Organizations to manage multiple environments. They want to ensure that no developer in the 'Development' organizational unit (OU) can provision Amazon EC2 instances larger than t3.large. What is the most operationally efficient way to enforce this?",
+      "options": [
+        "Create an IAM permissions boundary denying access to large instances and attach it to all IAM users.",
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU.",
+        "Configure an AWS Lambda function with EventBridge to terminate any large instance immediately after launch.",
+        "Use AWS Config to monitor instance launches and trigger a notification if a large instance is detected."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "SCPs offer central control over the maximum available permissions for all accounts in an OU. Attaching an SCP efficiently ensures the restriction applies universally across all member accounts without trusting local administrators.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU."
+      ]
+    },
+    {
+      "source_id": 76,
+      "bank_id": "saa-c03-gemini-0076",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 7] A solutions architect is designing an architecture for a new application that will use an Amazon Elastic File System (Amazon EFS) file system. The data is only accessed frequently for the first 30 days. After 30 days, the data is rarely accessed but must remain available within milliseconds. Which solution will meet these requirements MOST cost-effectively?",
+      "options": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days.",
+        "Use AWS DataSync to move files older than 30 days to Amazon S3 Standard-Infrequent Access.",
+        "Create a cron job on an EC2 instance to move older files to an Amazon Elastic Block Store (Amazon EBS) Cold HDD (sc1) volume.",
+        "Create an EFS lifecycle policy to transition files to the EFS Archive storage class after 30 days."
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "EFS Lifecycle Management automatically transitions files that have not been accessed for a defined period (e.g., 30 days) to the cost-optimized EFS IA storage class, which still provides millisecond retrieval latencies.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days."
+      ]
+    },
+    {
+      "source_id": 77,
+      "bank_id": "saa-c03-gemini-0077",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 7] A company's website is experiencing poor performance globally due to heavy image loading. The images are stored in an Amazon S3 bucket in the us-east-1 Region. Users in Europe and Asia are reporting high latency. Which AWS service should a solutions architect use to improve the performance for global users?",
+      "options": [
+        "AWS Global Accelerator",
+        "Amazon Route 53 with latency-based routing",
+        "Amazon CloudFront",
+        "Amazon S3 Transfer Acceleration"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon CloudFront is a globally distributed CDN that caches static content like images at edge locations near the users, drastically reducing latency for downloading these assets globally.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Amazon CloudFront"
+      ]
+    },
+    {
+      "source_id": 78,
+      "bank_id": "saa-c03-gemini-0078",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 7] A healthcare organization is migrating its patient records database to AWS. The database will be hosted on Amazon EC2 instances. The storage must provide high throughput and low-latency IOPS that can be provisioned independently from the volume size. Which Amazon Elastic Block Store (Amazon EBS) volume type should be utilized?",
+      "options": [
+        "General Purpose SSD (gp3)",
+        "Provisioned IOPS SSD (io2)",
+        "Throughput Optimized HDD (st1)",
+        "Cold HDD (sc1)"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Provisioned IOPS SSD (io2) volumes allow you to provision a specific level of IOPS performance independently of the volume's storage size, making it ideal for high-performance, latency-sensitive database workloads.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Provisioned IOPS SSD (io2)"
+      ]
+    },
+    {
+      "source_id": 79,
+      "bank_id": "saa-c03-gemini-0079",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 7] An application requires a decoupled architecture where a backend processing service needs to pull messages from a queue. The queue must ensure that messages are processed in the exact order they were received and that each message is processed exactly once. Which service should be used?",
+      "options": [
+        "Amazon SQS Standard queue",
+        "Amazon SQS FIFO queue",
+        "Amazon SNS topic",
+        "Amazon EventBridge"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon SQS FIFO (First-In-First-Out) queues guarantee that messages are processed in exact order and provide exactly-once processing functionality.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Amazon SQS FIFO queue"
+      ]
+    },
+    {
+      "source_id": 80,
+      "bank_id": "saa-c03-gemini-0080",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 7] A data analytics team has an Amazon Redshift cluster. They need to run complex analytical queries against massive amounts of cold data stored in an Amazon S3 datalake, without needing to load all that data continuously into the Redshift cluster's local storage. What should the solutions architect recommend?",
+      "options": [
+        "Use Amazon Athena to query S3 directly, then import results into Redshift.",
+        "Use AWS Glue to crawl the S3 data and create an AWS Glue Data Catalog.",
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster.",
+        "Configure an S3 event notification to trigger a Lambda function to load data into Redshift on demand."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon Redshift Spectrum natively extends Redshift queries so they can target Exabytes of data residing in Amazon S3 securely and quickly, without needing to explicitly load that data into the cluster first.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster."
+      ]
+    },
+    {
+      "source_id": 81,
+      "bank_id": "saa-c03-gemini-0081",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 8] A company is migrating a legacy application to AWS. The application requires a highly available relational database. The company wants to minimize operational overhead for database backups, patching, and scaling. Which solution meets these requirements?",
+      "options": [
+        "Deploy the database on Amazon EC2 instances across multiple Availability Zones.",
+        "Migrate to Amazon RDS and enable Multi-AZ deployments.",
+        "Use Amazon DynamoDB with point-in-time recovery enabled.",
+        "Deploy the database on AWS Fargate with Amazon EFS for persistent storage."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon RDS is a managed service that handles backups, patching, and scaling, reducing operational overhead. Enabling Multi-AZ provides high availability for resilience across Availability Zones.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Migrate to Amazon RDS and enable Multi-AZ deployments."
+      ]
+    },
+    {
+      "source_id": 82,
+      "bank_id": "saa-c03-gemini-0082",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 8] A web application runs on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The application occasionally experiences sudden, massive spikes in traffic within minutes, causing degraded performance before the Auto Scaling group can scale out effectively. How can a solutions architect improve the application's responsiveness to these expected spikes?",
+      "options": [
+        "Implement scheduled scaling for the Auto Scaling group.",
+        "Use target tracking scaling policies instead of simple scaling policies.",
+        "Configure predictive scaling for the Auto Scaling group.",
+        "Decrease the health check grace period of the Auto Scaling group."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Predictive scaling proactively scales out the Auto Scaling group in anticipation of predicted traffic spikes based on historical patterns, successfully avoiding the delay of pure reactive scaling.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Configure predictive scaling for the Auto Scaling group."
+      ]
+    },
+    {
+      "source_id": 83,
+      "bank_id": "saa-c03-gemini-0083",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 8] A company has a secure S3 bucket that contains highly sensitive financial documents. They must guarantee that the objects are not deleted or overwritten by anyone for exactly 7 years to meet regulatory requirements. Which feature should they implement?",
+      "options": [
+        "S3 Versioning with MFA Delete",
+        "S3 Object Lock in Governance mode",
+        "S3 Object Lock in Compliance mode",
+        "S3 Lifecycle policies transitioning to S3 Glacier Deep Archive"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "S3 Object Lock in Compliance mode prevents anyone, including the AWS account root user, from deleting or modifying an object until the retention period has completely expired.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "S3 Object Lock in Compliance mode"
+      ]
+    },
+    {
+      "source_id": 84,
+      "bank_id": "saa-c03-gemini-0084",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 8] A company wants to process streaming security data in real-time. They receive log data from thousands of endpoints globally and need to perform real-time analytics to detect anomalies before storing the data durably. Which combination of AWS services is best suited for this task?",
+      "options": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics",
+        "Amazon SQS and AWS Lambda",
+        "Amazon SNS and Amazon CloudWatch",
+        "AWS Glue and Amazon Athena"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Kinesis Data Streams collects and durably stores the streaming data. Kinesis Data Analytics natively integrates to process and analyze this streaming data in real-time using standard SQL or Apache Flink.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics"
+      ]
+    },
+    {
+      "source_id": 85,
+      "bank_id": "saa-c03-gemini-0085",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 8] A software company uses AWS Organizations to manage multiple environments. They want to ensure that no developer in the 'Development' organizational unit (OU) can provision Amazon EC2 instances larger than t3.large. What is the most operationally efficient way to enforce this?",
+      "options": [
+        "Create an IAM permissions boundary denying access to large instances and attach it to all IAM users.",
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU.",
+        "Configure an AWS Lambda function with EventBridge to terminate any large instance immediately after launch.",
+        "Use AWS Config to monitor instance launches and trigger a notification if a large instance is detected."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "SCPs offer central control over the maximum available permissions for all accounts in an OU. Attaching an SCP efficiently ensures the restriction applies universally across all member accounts without trusting local administrators.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU."
+      ]
+    },
+    {
+      "source_id": 86,
+      "bank_id": "saa-c03-gemini-0086",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 8] A solutions architect is designing an architecture for a new application that will use an Amazon Elastic File System (Amazon EFS) file system. The data is only accessed frequently for the first 30 days. After 30 days, the data is rarely accessed but must remain available within milliseconds. Which solution will meet these requirements MOST cost-effectively?",
+      "options": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days.",
+        "Use AWS DataSync to move files older than 30 days to Amazon S3 Standard-Infrequent Access.",
+        "Create a cron job on an EC2 instance to move older files to an Amazon Elastic Block Store (Amazon EBS) Cold HDD (sc1) volume.",
+        "Create an EFS lifecycle policy to transition files to the EFS Archive storage class after 30 days."
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "EFS Lifecycle Management automatically transitions files that have not been accessed for a defined period (e.g., 30 days) to the cost-optimized EFS IA storage class, which still provides millisecond retrieval latencies.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days."
+      ]
+    },
+    {
+      "source_id": 87,
+      "bank_id": "saa-c03-gemini-0087",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 8] A company's website is experiencing poor performance globally due to heavy image loading. The images are stored in an Amazon S3 bucket in the us-east-1 Region. Users in Europe and Asia are reporting high latency. Which AWS service should a solutions architect use to improve the performance for global users?",
+      "options": [
+        "AWS Global Accelerator",
+        "Amazon Route 53 with latency-based routing",
+        "Amazon CloudFront",
+        "Amazon S3 Transfer Acceleration"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon CloudFront is a globally distributed CDN that caches static content like images at edge locations near the users, drastically reducing latency for downloading these assets globally.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Amazon CloudFront"
+      ]
+    },
+    {
+      "source_id": 88,
+      "bank_id": "saa-c03-gemini-0088",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 8] A healthcare organization is migrating its patient records database to AWS. The database will be hosted on Amazon EC2 instances. The storage must provide high throughput and low-latency IOPS that can be provisioned independently from the volume size. Which Amazon Elastic Block Store (Amazon EBS) volume type should be utilized?",
+      "options": [
+        "General Purpose SSD (gp3)",
+        "Provisioned IOPS SSD (io2)",
+        "Throughput Optimized HDD (st1)",
+        "Cold HDD (sc1)"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Provisioned IOPS SSD (io2) volumes allow you to provision a specific level of IOPS performance independently of the volume's storage size, making it ideal for high-performance, latency-sensitive database workloads.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Provisioned IOPS SSD (io2)"
+      ]
+    },
+    {
+      "source_id": 89,
+      "bank_id": "saa-c03-gemini-0089",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 8] An application requires a decoupled architecture where a backend processing service needs to pull messages from a queue. The queue must ensure that messages are processed in the exact order they were received and that each message is processed exactly once. Which service should be used?",
+      "options": [
+        "Amazon SQS Standard queue",
+        "Amazon SQS FIFO queue",
+        "Amazon SNS topic",
+        "Amazon EventBridge"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon SQS FIFO (First-In-First-Out) queues guarantee that messages are processed in exact order and provide exactly-once processing functionality.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Amazon SQS FIFO queue"
+      ]
+    },
+    {
+      "source_id": 90,
+      "bank_id": "saa-c03-gemini-0090",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 8] A data analytics team has an Amazon Redshift cluster. They need to run complex analytical queries against massive amounts of cold data stored in an Amazon S3 datalake, without needing to load all that data continuously into the Redshift cluster's local storage. What should the solutions architect recommend?",
+      "options": [
+        "Use Amazon Athena to query S3 directly, then import results into Redshift.",
+        "Use AWS Glue to crawl the S3 data and create an AWS Glue Data Catalog.",
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster.",
+        "Configure an S3 event notification to trigger a Lambda function to load data into Redshift on demand."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon Redshift Spectrum natively extends Redshift queries so they can target Exabytes of data residing in Amazon S3 securely and quickly, without needing to explicitly load that data into the cluster first.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster."
+      ]
+    },
+    {
+      "source_id": 91,
+      "bank_id": "saa-c03-gemini-0091",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 9] A company is migrating a legacy application to AWS. The application requires a highly available relational database. The company wants to minimize operational overhead for database backups, patching, and scaling. Which solution meets these requirements?",
+      "options": [
+        "Deploy the database on Amazon EC2 instances across multiple Availability Zones.",
+        "Migrate to Amazon RDS and enable Multi-AZ deployments.",
+        "Use Amazon DynamoDB with point-in-time recovery enabled.",
+        "Deploy the database on AWS Fargate with Amazon EFS for persistent storage."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon RDS is a managed service that handles backups, patching, and scaling, reducing operational overhead. Enabling Multi-AZ provides high availability for resilience across Availability Zones.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Migrate to Amazon RDS and enable Multi-AZ deployments."
+      ]
+    },
+    {
+      "source_id": 92,
+      "bank_id": "saa-c03-gemini-0092",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 9] A web application runs on Amazon EC2 instances in an Auto Scaling group behind an Application Load Balancer. The application occasionally experiences sudden, massive spikes in traffic within minutes, causing degraded performance before the Auto Scaling group can scale out effectively. How can a solutions architect improve the application's responsiveness to these expected spikes?",
+      "options": [
+        "Implement scheduled scaling for the Auto Scaling group.",
+        "Use target tracking scaling policies instead of simple scaling policies.",
+        "Configure predictive scaling for the Auto Scaling group.",
+        "Decrease the health check grace period of the Auto Scaling group."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Predictive scaling proactively scales out the Auto Scaling group in anticipation of predicted traffic spikes based on historical patterns, successfully avoiding the delay of pure reactive scaling.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Configure predictive scaling for the Auto Scaling group."
+      ]
+    },
+    {
+      "source_id": 93,
+      "bank_id": "saa-c03-gemini-0093",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 9] A company has a secure S3 bucket that contains highly sensitive financial documents. They must guarantee that the objects are not deleted or overwritten by anyone for exactly 7 years to meet regulatory requirements. Which feature should they implement?",
+      "options": [
+        "S3 Versioning with MFA Delete",
+        "S3 Object Lock in Governance mode",
+        "S3 Object Lock in Compliance mode",
+        "S3 Lifecycle policies transitioning to S3 Glacier Deep Archive"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "S3 Object Lock in Compliance mode prevents anyone, including the AWS account root user, from deleting or modifying an object until the retention period has completely expired.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "S3 Object Lock in Compliance mode"
+      ]
+    },
+    {
+      "source_id": 94,
+      "bank_id": "saa-c03-gemini-0094",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 9] A company wants to process streaming security data in real-time. They receive log data from thousands of endpoints globally and need to perform real-time analytics to detect anomalies before storing the data durably. Which combination of AWS services is best suited for this task?",
+      "options": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics",
+        "Amazon SQS and AWS Lambda",
+        "Amazon SNS and Amazon CloudWatch",
+        "AWS Glue and Amazon Athena"
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "Kinesis Data Streams collects and durably stores the streaming data. Kinesis Data Analytics natively integrates to process and analyze this streaming data in real-time using standard SQL or Apache Flink.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Amazon Kinesis Data Streams and Amazon Kinesis Data Analytics"
+      ]
+    },
+    {
+      "source_id": 95,
+      "bank_id": "saa-c03-gemini-0095",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 9] A software company uses AWS Organizations to manage multiple environments. They want to ensure that no developer in the 'Development' organizational unit (OU) can provision Amazon EC2 instances larger than t3.large. What is the most operationally efficient way to enforce this?",
+      "options": [
+        "Create an IAM permissions boundary denying access to large instances and attach it to all IAM users.",
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU.",
+        "Configure an AWS Lambda function with EventBridge to terminate any large instance immediately after launch.",
+        "Use AWS Config to monitor instance launches and trigger a notification if a large instance is detected."
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "SCPs offer central control over the maximum available permissions for all accounts in an OU. Attaching an SCP efficiently ensures the restriction applies universally across all member accounts without trusting local administrators.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Create a Service Control Policy (SCP) denying runInstances for instance types larger than t3.large and attach it to the Development OU."
+      ]
+    },
+    {
+      "source_id": 96,
+      "bank_id": "saa-c03-gemini-0096",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 9] A solutions architect is designing an architecture for a new application that will use an Amazon Elastic File System (Amazon EFS) file system. The data is only accessed frequently for the first 30 days. After 30 days, the data is rarely accessed but must remain available within milliseconds. Which solution will meet these requirements MOST cost-effectively?",
+      "options": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days.",
+        "Use AWS DataSync to move files older than 30 days to Amazon S3 Standard-Infrequent Access.",
+        "Create a cron job on an EC2 instance to move older files to an Amazon Elastic Block Store (Amazon EBS) Cold HDD (sc1) volume.",
+        "Create an EFS lifecycle policy to transition files to the EFS Archive storage class after 30 days."
+      ],
+      "answer": [
+        0
+      ],
+      "explanation": "EFS Lifecycle Management automatically transitions files that have not been accessed for a defined period (e.g., 30 days) to the cost-optimized EFS IA storage class, which still provides millisecond retrieval latencies.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "A"
+      ],
+      "correct_option_texts": [
+        "Create an EFS lifecycle policy to transition files to the EFS Infrequent Access (EFS IA) storage class after 30 days."
+      ]
+    },
+    {
+      "source_id": 97,
+      "bank_id": "saa-c03-gemini-0097",
+      "type": "multiple-choice",
+      "domain": "Domain 1: Design Secure Architectures",
+      "text": "[Variant Group 9] A company's website is experiencing poor performance globally due to heavy image loading. The images are stored in an Amazon S3 bucket in the us-east-1 Region. Users in Europe and Asia are reporting high latency. Which AWS service should a solutions architect use to improve the performance for global users?",
+      "options": [
+        "AWS Global Accelerator",
+        "Amazon Route 53 with latency-based routing",
+        "Amazon CloudFront",
+        "Amazon S3 Transfer Acceleration"
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon CloudFront is a globally distributed CDN that caches static content like images at edge locations near the users, drastically reducing latency for downloading these assets globally.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Amazon CloudFront"
+      ]
+    },
+    {
+      "source_id": 98,
+      "bank_id": "saa-c03-gemini-0098",
+      "type": "multiple-choice",
+      "domain": "Domain 2: Design Resilient Architectures",
+      "text": "[Variant Group 9] A healthcare organization is migrating its patient records database to AWS. The database will be hosted on Amazon EC2 instances. The storage must provide high throughput and low-latency IOPS that can be provisioned independently from the volume size. Which Amazon Elastic Block Store (Amazon EBS) volume type should be utilized?",
+      "options": [
+        "General Purpose SSD (gp3)",
+        "Provisioned IOPS SSD (io2)",
+        "Throughput Optimized HDD (st1)",
+        "Cold HDD (sc1)"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Provisioned IOPS SSD (io2) volumes allow you to provision a specific level of IOPS performance independently of the volume's storage size, making it ideal for high-performance, latency-sensitive database workloads.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Provisioned IOPS SSD (io2)"
+      ]
+    },
+    {
+      "source_id": 99,
+      "bank_id": "saa-c03-gemini-0099",
+      "type": "multiple-choice",
+      "domain": "Domain 3: Design High-Performing Architectures",
+      "text": "[Variant Group 9] An application requires a decoupled architecture where a backend processing service needs to pull messages from a queue. The queue must ensure that messages are processed in the exact order they were received and that each message is processed exactly once. Which service should be used?",
+      "options": [
+        "Amazon SQS Standard queue",
+        "Amazon SQS FIFO queue",
+        "Amazon SNS topic",
+        "Amazon EventBridge"
+      ],
+      "answer": [
+        1
+      ],
+      "explanation": "Amazon SQS FIFO (First-In-First-Out) queues guarantee that messages are processed in exact order and provide exactly-once processing functionality.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "B"
+      ],
+      "correct_option_texts": [
+        "Amazon SQS FIFO queue"
+      ]
+    },
+    {
+      "source_id": 100,
+      "bank_id": "saa-c03-gemini-0100",
+      "type": "multiple-choice",
+      "domain": "Domain 4: Design Cost-Optimized Architectures",
+      "text": "[Variant Group 9] A data analytics team has an Amazon Redshift cluster. They need to run complex analytical queries against massive amounts of cold data stored in an Amazon S3 datalake, without needing to load all that data continuously into the Redshift cluster's local storage. What should the solutions architect recommend?",
+      "options": [
+        "Use Amazon Athena to query S3 directly, then import results into Redshift.",
+        "Use AWS Glue to crawl the S3 data and create an AWS Glue Data Catalog.",
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster.",
+        "Configure an S3 event notification to trigger a Lambda function to load data into Redshift on demand."
+      ],
+      "answer": [
+        2
+      ],
+      "explanation": "Amazon Redshift Spectrum natively extends Redshift queries so they can target Exabytes of data residing in Amazon S3 securely and quickly, without needing to explicitly load that data into the cluster first.",
+      "times_selected": 0,
+      "correct_option_labels": [
+        "C"
+      ],
+      "correct_option_texts": [
+        "Use Amazon Redshift Spectrum to query the S3 data directly from the Redshift cluster."
+      ]
+    }
+  ]
+}
