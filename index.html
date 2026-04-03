@@ -49,6 +49,21 @@
           in this project folder, then open <code>http://localhost:8000</code>.
         </div>
 
+        <div class="mode-selector">
+          <span class="mode-label">Quiz Mode</span>
+          <div class="mode-options">
+            <label class="mode-option">
+              <input type="radio" name="quiz-mode" value="exam" id="mode-exam" checked />
+              <span class="mode-btn">Exam</span>
+            </label>
+            <label class="mode-option">
+              <input type="radio" name="quiz-mode" value="study" id="mode-study" />
+              <span class="mode-btn">Study</span>
+            </label>
+          </div>
+          <p class="mode-desc" id="mode-desc">Answer all questions, then see your score and review.</p>
+        </div>
+
         <div class="toggle-list">
           <label class="toggle-row">
             <span class="toggle-text">Shuffle questions and options</span>
@@ -99,6 +114,7 @@
         <div class="card prog-card">
           <div class="prog-labels">
             <span id="q-counter">Question 1 of 1</span>
+            <span id="q-live-score" class="live-score hidden"></span>
             <div class="prog-right">
               <span id="q-tag-pill" class="tag-pill hidden">Tagged</span>
               <span id="q-domain" class="domain-label"></span>
@@ -152,6 +168,7 @@
                 <button id="btn-quit" class="btn btn-ghost btn-quit">Quit</button>
               </div>
               <div class="nav-right">
+                <button id="btn-check" class="btn btn-primary hidden">Check Answer</button>
                 <button id="btn-submit" class="btn btn-primary hidden">Submit Quiz</button>
                 <button id="btn-next" class="btn btn-primary">Next</button>
               </div>

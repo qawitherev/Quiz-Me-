@@ -18,6 +18,10 @@ const state = {
   correctingAnswer: false,
   correctionSelection: [],
   _correctionQuestionIdx: -1,
+  quizMode: 'exam',
+  studyAnswered: {},
+  studyCorrect: 0,
+  studyTotal: 0,
 };
 
 // ── DOM refs ───────────────────────────────────────────────────────────────────
@@ -39,6 +43,7 @@ const DOM = {
   btnRefreshSet: $('btn-refresh-set'),
   inpBankFile:   $('inp-bank-file'),
   refreshStatus: $('refresh-status'),
+  modeDesc:      $('mode-desc'),
   btnContinue:   $('btn-continue'),
   btnStart:      $('btn-start'),
   // Quiz
@@ -66,6 +71,8 @@ const DOM = {
   btnNext:       $('btn-next'),
   btnSubmit:     $('btn-submit'),
   btnQuit:       $('btn-quit'),
+  btnCheck:      $('btn-check'),
+  liveScore:     $('q-live-score'),
   // Results
   verdict:       $('verdict'),
   scoreNum:      $('score-num'),
@@ -298,6 +305,15 @@ function renderQuestion() {
   }
   DOM.domain.textContent     = q.domain ?? '';
   DOM.barFill.style.width    = `${((idx + 1) / total) * 100}%`;
+
+  // Live score (study mode)
+  if (state.quizMode === 'study') {
+    DOM.liveScore.textContent = `${state.studyCorrect} / ${state.studyTotal} correct`;
+    DOM.liveScore.classList.remove('hidden');
+  } else {
+    DOM.liveScore.classList.add('hidden');
+  }
+
   updateTagButton(q);
   updateReviewIndicator(q);
   renderJumpGrid(activeQuestions);
@@ -343,7 +359,7 @@ function renderQuestion() {
     if (state.correctingAnswer) {
       if (state.correctionSelection.includes(idx2)) btn.classList.add('correction-selected');
       btn.addEventListener('click', () => toggleCorrectionOption(idx2, isMulti));
-    } else if (state.isReviewMode) {
+    } else if (state.isReviewMode || (state.quizMode === 'study' && state.studyAnswered[q.id])) {
       if (ua.includes(idx2)) btn.classList.add('selected');
       btn.disabled = true;
       if (q.answer.includes(idx2))          btn.classList.add('correct');
@@ -359,8 +375,8 @@ function renderQuestion() {
   // Correction bar
   DOM.qCorrect.classList.toggle('hidden', !state.correctingAnswer);
 
-  // Explanation (review mode only, hidden during correction)
-  if (state.isReviewMode && q.explanation && !state.correctingAnswer) {
+  // Explanation (review mode or study mode after checking)
+  if ((state.isReviewMode || (state.quizMode === 'study' && state.studyAnswered[q.id])) && q.explanation && !state.correctingAnswer) {
     DOM.qExplText.textContent = q.explanation;
     DOM.qExpl.classList.remove('hidden');
   } else {
@@ -378,9 +394,18 @@ function renderQuestion() {
   const isLast = (idx === total - 1);
   if (state.isReviewMode) {
     DOM.btnSubmit.classList.add('hidden');
+    DOM.btnCheck.classList.add('hidden');
     DOM.btnNext.classList.remove('hidden');
     DOM.btnNext.textContent = isLast ? 'Back to Results' : 'Next';
+  } else if (state.quizMode === 'study') {
+    DOM.btnSubmit.classList.add('hidden');
+    const checked = state.studyAnswered[q.id];
+    const hasSelection = ua.length > 0;
+    DOM.btnCheck.classList.toggle('hidden', checked || !hasSelection);
+    DOM.btnNext.classList.remove('hidden');
+    DOM.btnNext.textContent = isLast ? 'Finish' : 'Next';
   } else {
+    DOM.btnCheck.classList.add('hidden');
     DOM.btnNext.textContent = 'Next';
     DOM.btnNext.classList.toggle('hidden', isLast);
     DOM.btnSubmit.classList.toggle('hidden', !isLast);
@@ -388,6 +413,8 @@ function renderQuestion() {
 }
 
 function handleOption(q, optIdx, isMulti) {
+  if (state.quizMode === 'study' && state.studyAnswered[q.id]) return;
+
   let ua = [...(state.userAnswers[q.id] ?? [])];
 
   if (isMulti) {
@@ -398,6 +425,14 @@ function handleOption(q, optIdx, isMulti) {
   }
 
   state.userAnswers[q.id] = ua;
+
+  // In study mode, auto-check single-choice questions immediately
+  if (state.quizMode === 'study' && !isMulti) {
+    state.studyAnswered[q.id] = true;
+    state.studyTotal++;
+    if (isCorrect(q)) state.studyCorrect++;
+  }
+
   renderQuestion();
 }
 
@@ -420,8 +455,8 @@ function showResults() {
   const passing = state.metadata.passing_score ?? 720;
   const passed  = scaled >= passing;
 
-  // Auto-save once per new quiz completion
-  if (!state.isReviewMode && !state.viewingSession && !state.sessionSaved) {
+  // Auto-save once per new quiz completion (exam mode only)
+  if (!state.isReviewMode && !state.viewingSession && !state.sessionSaved && state.quizMode !== 'study') {
     saveSession();
     clearSavedProgress();
     state.sessionSaved = true;
@@ -468,8 +503,9 @@ function showResults() {
     });
   });
 
-  DOM.btnReview.classList.toggle('hidden', !state.reviewEnabled);
-  DOM.btnReviewTagged.classList.toggle('hidden', !state.reviewEnabled || taggedCount === 0);
+  const showReviewBtns = state.reviewEnabled && state.quizMode !== 'study';
+  DOM.btnReview.classList.toggle('hidden', !showReviewBtns);
+  DOM.btnReviewTagged.classList.toggle('hidden', !showReviewBtns || taggedCount === 0);
   DOM.btnRestart.textContent = state.viewingSession ? '← Back to History' : 'Restart';
 
   showScreen('results');
@@ -487,6 +523,7 @@ DOM.btnStart.addEventListener('click', () => {
 
   const doShuffle     = DOM.optShuffle.checked;
   state.reviewEnabled  = DOM.optReview.checked;
+  state.quizMode       = document.querySelector('input[name="quiz-mode"]:checked').value;
   state.reviewTaggedOnly = false;
   state.isReviewMode   = false;
   state.viewingSession = false;
@@ -494,6 +531,9 @@ DOM.btnStart.addEventListener('click', () => {
   state.userAnswers    = {};
   state.userNotes      = {};
   state.taggedQuestions = {};
+  state.studyAnswered  = {};
+  state.studyCorrect   = 0;
+  state.studyTotal     = 0;
   state.currentIndex   = 0;
 
   const count = Number(DOM.optQuestionCount.value) || state.allQuestions.length;
@@ -525,10 +565,14 @@ DOM.btnContinue.addEventListener('click', () => {
   state.userNotes       = { ...(progress.userNotes ?? {}) };
   state.currentIndex    = progress.currentIndex ?? 0;
   state.reviewEnabled   = progress.reviewEnabled ?? true;
+  state.quizMode        = 'exam';
   state.reviewTaggedOnly = false;
   state.isReviewMode    = false;
   state.viewingSession  = false;
   state.sessionSaved    = false;
+  state.studyAnswered   = {};
+  state.studyCorrect    = 0;
+  state.studyTotal      = 0;
 
   renderQuestion();
   showScreen('quiz');
@@ -536,8 +580,11 @@ DOM.btnContinue.addEventListener('click', () => {
 
 // ── Quit Quiz ──────────────────────────────────────────────────────────────────
 DOM.btnQuit.addEventListener('click', () => {
-  if (!confirm('Quit the quiz? Your progress will be saved.')) return;
-  saveProgress();
+  const msg = state.quizMode === 'study'
+    ? 'Quit the quiz?'
+    : 'Quit the quiz? Your progress will be saved.';
+  if (!confirm(msg)) return;
+  if (state.quizMode !== 'study') saveProgress();
   updateWelcomeButtons();
   showScreen('welcome');
 });
@@ -548,8 +595,7 @@ DOM.btnNext.addEventListener('click', () => {
   if (state.currentIndex < total - 1) {
     state.currentIndex++;
     renderQuestion();
-  } else if (state.isReviewMode) {
-    // Last question in review → back to results
+  } else if (state.isReviewMode || state.quizMode === 'study') {
     showResults();
   }
 });
@@ -573,6 +619,17 @@ DOM.btnSubmit.addEventListener('click', () => {
     }
   }
   showResults();
+});
+
+DOM.btnCheck.addEventListener('click', () => {
+  const activeQuestions = getActiveQuestions();
+  const q = activeQuestions[state.currentIndex];
+  if (!q || state.studyAnswered[q.id]) return;
+
+  state.studyAnswered[q.id] = true;
+  state.studyTotal++;
+  if (isCorrect(q)) state.studyCorrect++;
+  renderQuestion();
 });
 
 DOM.btnTag.addEventListener('click', () => {
@@ -791,6 +848,7 @@ function loadPastSession(session, historyIndex = -1) {
   );
   state.userNotes         = { ...(session.userNotes ?? {}) };
   state.reviewEnabled     = true;
+  state.quizMode          = 'exam';
   state.reviewTaggedOnly  = false;
   state.isReviewMode      = false;
   state.viewingSession    = true;
@@ -982,3 +1040,12 @@ DOM.btnCorrectSave.addEventListener('click', async () => {
   }
   updateWelcomeButtons();
 })();
+
+// ── Mode Description Toggle ────────────────────────────────────────────────────
+document.querySelectorAll('input[name="quiz-mode"]').forEach(radio => {
+  radio.addEventListener('change', () => {
+    DOM.modeDesc.textContent = radio.value === 'study'
+      ? 'Get instant feedback after each answer. No history saved.'
+      : 'Answer all questions, then see your score and review.';
+  });
+});
